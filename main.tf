@@ -74,7 +74,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
   provisioner "remote-exec" {
     inline = [
-      "ls"
+      "touch /tmp/test"
     ]
   }
 }
