@@ -1,8 +1,12 @@
+#cloud-config
+datasource:
+  Ec2:
+    strict_id: false
 ssh_pwauth: no
 users:
   - name: vadim
-    groups: sudo
+    sudo: ALL=(ALL) NOPASSWD:ALL
     shell: /bin/bash
-    sudo: "ALL=(ALL) NOPASSWD:ALL"
     ssh_authorized_keys:
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDe3rF4LrC5zxVugBk1HRTbuu6PfCapg7kfPXXAwV9RR3+T5pIfzsnelfglN63mJgY5HjT/el3yD9G1jAMwbIAgcr9xrLE7x5CmEoUtcWuP9TVTh7gkyk26Y4gMCdzEtvk+Ihiis0oIVBeWrQMdTDY4i3pVaSUIQ9x2cJrYgNsmst2LKdHAPkyxSgT2hNhSOBaXV1KVpuj+bMI47+rJ+f4dWhnvndPK3nDLn2ynTJoIO0AAhoWPNZ+zukJ3AQIJq9scq5Jcla7/7tUgvx7BtB3UaFM9ToRrXpqYltw5fiKOnII8u9GUlE+xzHrTj9GEN6Uly2aifJnVyvhWUoL6d6hMay7QOsni/PO7+Erf3BeTTZoHDr5+i8ShU+/50k2E/b2HoAL68KS99LYe9aQSEvB8xOT+91I2Oa+8Gpg4NthPUKC4PUGFkCERmcXkZH41NEyNZoTFtW6vs0ShBBdTc/0/FPdgFDSTiXI8tPxhHrwVzJsQ5v90GaHN+DwX7UlloXk=
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCoy2dufSJ4Ulk2xCxuzOzhIlVv2CGXKHOQm1bEMsTnAUXfDtASyjNGEKn1ivwRVpBBqqWGpqJ95v9gyj0VxrVPegJaRRQ2OqU7KvFfnMrfKqBdrsq2BNou1QeOkORXSj7CvjOlyvg/ltucowln6SDGSLz1gvA809lif3IFVjT00FbNLT/fm2oU0Zh0gVHJZ4HEgGXVnJy9ghrq9V2UktqJEqW4h86/Dh72P/VPLCISCrGzvzbWnllDzl6o4OYeRB7cWEN/ma7cEDBOsOJeGtRl+ZhWbFnnYCRzgb30TsdNy50OglLyzN8AyZ2HcELEUahPTy1yRtmHKbwx/QqUJvFK6nm+kfznA9hfOFeEQuGq7ob/WnXqmfYLpbLJx5Ht6dhj6Wo91SVcZtQnd82rzb7MLyg1LKuuolNY8+wIsFFeUi/kPk7wQAZAXQ1I7Ek7YfxqBgtuNh1Lzs8biio8R+47FcmcGBtT+Rd7OloFNrjk/zvoMgNimvNEiG+N9OAHP5c=
+runcmd: []

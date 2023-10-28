@@ -8,10 +8,9 @@ terraform {
 }
 
 provider "yandex" {
-  zone                     = "ru-central1-a"
-  service_account_key_file = "../key.json"
-  folder_id                = "b1g1qiql9fvto0ppnms0"
-  cloud_id                 = "b1gjjgb4685d1vakrjeq"
+  zone      = "ru-central1-a"
+  folder_id = "b1g1qiql9fvto0ppnms0"
+  cloud_id  = "b1gjjgb4685d1vakrjeq"
 }
 resource "yandex_vpc_network" "network-1" {
   name = "network1"
@@ -62,7 +61,7 @@ resource "yandex_compute_instance" "vm-1" {
 
   boot_disk {
     initialize_params {
-      image_id = "fd8dibo9ts96rt2ihbsm"
+      image_id = "fd8tgblovu5dklvrp29h"
     }
   }
 
