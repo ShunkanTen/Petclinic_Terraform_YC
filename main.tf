@@ -38,13 +38,19 @@ resource "yandex_vpc_security_group" "external_connection_with_petclinic" {
     protocol       = "TCP"
     description    = "protocol HTTPS"
     v4_cidr_blocks = ["0.0.0.0/0"]
-    port           = 433
+    port           = 443
   }
   ingress {
     protocol       = "TCP"
     description    = "rules for incoming traffic"
     v4_cidr_blocks = ["0.0.0.0/0"]
     port           = 80
+  }
+  ingress {
+    protocol       = "TCP"
+    description    = "app port"
+    v4_cidr_blocks = ["0.0.0.0/0"]
+    port           = 8080
   }
 }
 
