@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  petclinic_db:
+    container_name: petclinic_db
+    image: mysql/mysql-server
+    ports:
+     - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_USER=petclinic
+      - MYSQL_PASSWORD=petclinic
+      - MYSQL_DATABASE=petclinic
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 5s
+      retries: 10
+    restart: always
+    networks:
+      - net
+
+  petclinic:
+    image: petclinic
+    depends_on:
+      petclinic_db:
+        condition: service_healthy
+    container_name: petclinic
+    ports:
+      - "8080:8080"
+    networks:
+      - net
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql
+    restart: always
+
+networks:
+  net:
+    name: net
+    external: true
