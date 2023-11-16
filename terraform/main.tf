@@ -88,12 +88,11 @@ resource "yandex_compute_instance" "vm-1" {
       "sudo apt-get update",
       "sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y",
       "sudo usermod -aG docker $USER",
-      "git clone https://github.com/ShunkanTen/spring-petclinic.git",
-      "cd ./spring-petclinic/",
+      "git clone https://github.com/ShunkanTen/Petclinic_Terraform_YC.git",
+      "cd ~/Petclinic_Terraform_YC/spring-petclinic/",
       "sudo docker build . -t petclinic",
       "sudo docker network create net",
       "sudo docker compose up -d"
     ]
   }
 }
-
