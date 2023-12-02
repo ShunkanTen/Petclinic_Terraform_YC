@@ -8,9 +8,10 @@ terraform {
 }
 
 provider "yandex" {
-  zone      = "ru-central1-a"
-  folder_id = "b1g1qiql9fvto0ppnms0"
-  cloud_id  = "b1gjjgb4685d1vakrjeq"
+  zone                     = "ru-central1-a"
+  folder_id                = "b1g3uc18j583qsjkeuba"
+  cloud_id                 = "b1g5t19bqubd71dfm42j"
+  service_account_key_file = ("${path.module}/key.json")
 }
 
 resource "yandex_vpc_network" "network-1" {
@@ -80,7 +81,7 @@ resource "yandex_compute_instance" "vm-1" {
   }
   provisioner "remote-exec" {
     inline = [
-      "ssudo apt-get install ca-certificates curl gnupg",
+      "sudo apt-get install ca-certificates curl gnupg",
       "sudo install -m 0755 -d /etc/apt/keyrings",
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg",
       "sudo chmod a+r /etc/apt/keyrings/docker.gpg",
