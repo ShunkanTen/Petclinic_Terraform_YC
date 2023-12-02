@@ -3,4 +3,4 @@ terraform.tfstate.backup
 .idea/*
 .terraform.lock.hcl
 .terraform/providers/*
-./terraform/key.json
+/terraform/key.json
