@@ -29,6 +29,7 @@ resource "yandex_vpc_security_group" "external_connection_with_petclinic" {
   name        = "security croup"
   description = "security group for petclinic"
   network_id  = yandex_vpc_network.network-1.id
+
   ingress {
     protocol       = "TCP"
     description    = "ssh connection rules"
@@ -67,8 +68,9 @@ resource "yandex_compute_instance" "vm-1" {
     }
   }
   network_interface {
-    subnet_id = yandex_vpc_subnet.subnet-1.id
-    nat       = true
+    subnet_id      = yandex_vpc_subnet.subnet-1.id
+    nat            = true
+    nat_ip_address = "84.201.134.185"
   }
   metadata = {
     user-data = file("${path.module}/meta.yaml")

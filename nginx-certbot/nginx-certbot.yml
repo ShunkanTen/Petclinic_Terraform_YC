@@ -5,7 +5,7 @@ services:
     container_name: nginx_proxy
     restart: unless-stopped
     volumes:
-      - ./conf.d/nginx.conf
+      - /conf.d/nginx.conf
   ports:
     - "80:80"
     - "8080:8080"
