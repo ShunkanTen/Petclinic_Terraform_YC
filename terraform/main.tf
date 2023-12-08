@@ -81,6 +81,7 @@ resource "yandex_compute_instance" "vm-1" {
     private_key = file("~/.ssh/id_rsa")
     host        = self.network_interface.0.nat_ip_address
   }
+
   provisioner "remote-exec" {
     inline = [
       "sudo apt-get install ca-certificates curl gnupg",
