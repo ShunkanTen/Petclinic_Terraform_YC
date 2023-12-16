@@ -48,12 +48,6 @@ resource "yandex_vpc_security_group" "external_connection_with_petclinic" {
     v4_cidr_blocks = ["0.0.0.0/0"]
     port           = 80
   }
-  ingress {
-    protocol       = "TCP"
-    description    = "app port"
-    v4_cidr_blocks = ["0.0.0.0/0"]
-    port           = 8080
-  }
 }
 
 resource "yandex_compute_instance" "vm-1" {
