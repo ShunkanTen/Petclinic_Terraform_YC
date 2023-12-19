@@ -54,11 +54,11 @@ resource "yandex_compute_instance" "vm-1" {
   name = "terraform1"
   resources {
     cores  = 2
-    memory = 6
+    memory = 8
   }
   boot_disk {
     initialize_params {
-      image_id = "fd8tgblovu5dklvrp29h"
+      image_id = "fd84nt41ssoaapgql97p"
     }
   }
   network_interface {
@@ -78,7 +78,7 @@ resource "yandex_compute_instance" "vm-1" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get install ca-certificates curl gnupg",
+      "sudo apt-get install ca-certificates curl gnupg net-tools -y",
       "sudo install -m 0755 -d /etc/apt/keyrings",
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg",
       "sudo chmod a+r /etc/apt/keyrings/docker.gpg",
