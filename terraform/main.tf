@@ -52,23 +52,29 @@ resource "yandex_vpc_security_group" "external_connection_with_petclinic" {
 
 resource "yandex_compute_instance" "vm-1" {
   name = "terraform1"
+
   resources {
     cores  = 2
-    memory = 8
+    memory = 6
   }
+
   boot_disk {
     initialize_params {
-      image_id = "fd84nt41ssoaapgql97p"
+      image_id = "fd8k54g2t50mekbk1ie1"
+      size     = 10
     }
   }
+
   network_interface {
     subnet_id      = yandex_vpc_subnet.subnet-1.id
     nat            = true
     nat_ip_address = "84.201.134.185"
   }
+
   metadata = {
     user-data = file("${path.module}/meta.yaml")
   }
+
   connection {
     type        = "ssh"
     user        = "vadim"
@@ -78,7 +84,7 @@ resource "yandex_compute_instance" "vm-1" {
 
   provisioner "remote-exec" {
     inline = [
-      "sudo apt-get install ca-certificates curl gnupg net-tools -y",
+      "sudo apt-get install ca-certificates curl gnupg",
       "sudo install -m 0755 -d /etc/apt/keyrings",
       "curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg",
       "sudo chmod a+r /etc/apt/keyrings/docker.gpg",
@@ -90,7 +96,8 @@ resource "yandex_compute_instance" "vm-1" {
       "cd ~/Petclinic_Terraform_YC/spring-petclinic/",
       "sudo docker build . -t petclinic",
       "sudo docker network create net",
-      "sudo docker compose up -d"
+      "sudo docker compose up -d",
+      "sudo apt-get install docker-compose -y"
     ]
   }
 }
