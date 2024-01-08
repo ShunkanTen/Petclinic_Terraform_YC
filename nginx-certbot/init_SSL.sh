@@ -25,7 +25,7 @@ fi
 echo "### Creating dummy certificate for $domains ..."
 path="/etc/letsencrypt/live/$domains"
 mkdir -p "$data_path/conf/live/$domains"
-docker-compose -f nginx_certbot.yml run --rm --entrypoint "\
+docker-compose -f nginx-certbot.yml run --rm --entrypoint "\
   openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
   -keyout '$path/privkey.pem'\
   -out '$path/fullchain.pem'\
@@ -37,7 +37,7 @@ docker-compose -f nginx-certbot.yml up --force-recreate -d nginxserver
 echo
 
 echo "### Deleting dummy certificate for $domains"
-docker-compose -f nginx_certbot.yml run --rm --entrypoint "\
+docker-compose -f nginx-certbot.yml run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/live/$domains && \
   rm -Rf /etc/letsencrypt/archive/$domains && \
   rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
@@ -68,7 +68,7 @@ docker-compose -f nginx-certbot.yml run --rm --entrypoint "\
 echo
 
 echo "### Reloading nginx ..."
-docker exec nginxserver nginx -s reload
+docker exec nginx-proxy nginx -s reload
 
 echo "### Starting certbot ..."
 docker-compose -f nginx-certbot.yml up -d
