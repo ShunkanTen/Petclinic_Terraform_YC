@@ -33,7 +33,7 @@ docker-compose -f nginx_certbot.yml run --rm --entrypoint "\
 echo
 
 echo "### Starting nginx ..."
-docker-compose -f nginx_certbot.yml up --force-recreate -d nginxserver
+docker-compose -f nginx-certbot.yml up --force-recreate -d nginxserver
 echo
 
 echo "### Deleting dummy certificate for $domains"
@@ -57,7 +57,7 @@ esac
 if [ $staging != "0" ]; then staging_arg="--staging";
 fi
 
-docker-compose -f nginx_certbot.yml run --rm --entrypoint "\
+docker-compose -f nginx-certbot.yml run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
   $staging_arg \
   $email_arg \
@@ -71,4 +71,4 @@ echo "### Reloading nginx ..."
 docker exec nginxserver nginx -s reload
 
 echo "### Starting certbot ..."
-docker-compose -f nginx_certbot.yml up -d
+docker-compose -f nginx-certbot.yml up -d
