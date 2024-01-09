@@ -1,6 +1,6 @@
 #!/bin/bash
 
-domains=("shunkanten.ru" "www.shunkanten.ru")
+domains=("shunkanten.ru")
 rsa_key_size=4096
 data_path="./certbot"
 email="vadim.gikashvili@gmail.com"
@@ -33,7 +33,7 @@ docker-compose -f nginx-certbot.yml run --rm --entrypoint "\
 echo
 
 echo "### Starting nginx ..."
-docker-compose -f nginx-certbot.yml up --force-recreate -d nginxserver
+docker-compose -f nginx-certbot.yml up --force-recreate -d nginx-proxy
 echo
 
 echo "### Deleting dummy certificate for $domains"
