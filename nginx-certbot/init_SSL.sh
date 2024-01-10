@@ -1,6 +1,6 @@
 #!/bin/bash
 
-domains=("shunkanten.ru")
+domains=(shunkanten.ru)
 rsa_key_size=4096
 data_path="./certbot"
 email="vadim.gikashvili@gmail.com"
