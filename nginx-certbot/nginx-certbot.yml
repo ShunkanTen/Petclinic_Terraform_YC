@@ -3,7 +3,7 @@ version: "3"
 services:
   nginx-proxy:
     image: nginx:1.25.1-alpine
-    container_name: nginx_proxy
+    container_name: nginx-proxy
     restart: unless-stopped
     volumes:
       - ./conf.d:/etc/nginx/conf.d
@@ -29,5 +29,5 @@ services:
 
 networks:
   net:
-    name: net
-    external: true
+    external:
+      name: net
