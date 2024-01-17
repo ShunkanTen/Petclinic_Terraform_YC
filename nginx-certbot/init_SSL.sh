@@ -4,7 +4,7 @@ domains=(shunkanten.ru www.shunkanten.ru)
 rsa_key_size=4096
 data_path="./certbot"
 email="vadim.gikashvili@gmail.com"
-staging="1"
+staging="0"
 
 
 if [ -d "$data_path" ]; then
